@@ -3,8 +3,8 @@
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
 
-String wifiSSID = "rizkiyee";
-String wifiPassword = "oshiayana48";
+String wifiSSID = "";
+String wifiPassword = "";
 String mqttBroker = "test.mosquitto.org";
 int s_id;
 int s_val;
