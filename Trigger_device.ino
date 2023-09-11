@@ -3,8 +3,8 @@
 #include <PubSubClient.h>
 const int pushButtonPin = 2;
 // Wi-Fi parameters
-String wifiSSID = "rizkiyee";
-String wifiPassword = "oshiayana48";
+String wifiSSID = "";
+String wifiPassword = "";
 String mqttBroker = "test.mosquitto.org";
 WiFiClient client;
 int t_id, t_val, s_id, s_val;
@@ -19,12 +19,6 @@ void setup() {
   connectWiFi();
   mqtt.setServer(mqttBroker.c_str(), 1883);
   mqtt.setCallback(mqttReceiveMessage);
-  // connect_mqtt();
-  // for(int i = 0; i < 3; i++){
-  //   sendJsonDataToMQTT();
-  //   delay(5000);
-  // }
-
 }
 
 void mqttReceiveMessage(char* topic, byte*msg, unsigned int msgLength){
@@ -45,8 +39,6 @@ void mqttReceiveMessage(char* topic, byte*msg, unsigned int msgLength){
   t_val = jsonDocument["trigger_val"].as<int>();
   s_id = jsonDocument["service_id"].as<int>();
   s_val = jsonDocument["service_val"].as<int>();
-  // Serial.println(t_id);
-  // Serial.println(s_val);
   if (device_id == t_id){
     Serial.println("Rule Diproses");
   }
